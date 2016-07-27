@@ -4,9 +4,9 @@ training milestone increases as well.
 
 Sample estimates with the current formula:
 
-0 to 20 miles = 4 months
-0 to 40 miles = 11 months
-0 to 100 miles = 3.2 years
+* 0 to 20 miles = 4 months
+* 0 to 40 miles = 11 months
+* 0 to 100 miles = 3.2 years
 
 This calculator is for *entertainment purposes only*. Consult your
 doctor before starting any sort of training plan.
