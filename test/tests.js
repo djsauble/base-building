@@ -126,3 +126,32 @@ QUnit.test('How long to train from 50-75 miles per week?', function(assert) {
   assert.equal(duration, '1.1 years', 'Passed!');
 });
 
+QUnit.test('What mileage at week 1 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(1, 80);
+  assert.equal(mileage, 80);
+});
+
+QUnit.test('What mileage at week 2 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(2, 80);
+  assert.equal(mileage, 72);
+});
+
+QUnit.test('What mileage at week 3 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(3, 80);
+  assert.equal(mileage, 68);
+});
+
+QUnit.test('What mileage at week 4 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(4, 80);
+  assert.equal(mileage, 72);
+});
+
+QUnit.test('What mileage at week 5 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(5, 80);
+  assert.equal(mileage, 80);
+});
+
+QUnit.test('What mileage at week 6 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(6, 80);
+  assert.equal(mileage, 80);
+});

@@ -15,6 +15,30 @@ function makeWeeksHuman(weeks) {
   }
 }
 
+// Calculate the number of miles to run during a specific week of
+// a training level
+function mileageAtWeek(week, startingMileage) {
+
+  // Subtract one from the week to make it zero-based
+  var mod = (week - 1) % 5;
+
+  if (mod === 0) {
+    return startingMileage;
+  }
+  else if (mod === 1) {
+    return startingMileage * 0.90;
+  }
+  else if (mod === 2) {
+    return startingMileage * 0.85;
+  }
+  else if (mod === 3) {
+    return startingMileage * 0.90;
+  }
+  else if (mod === 4) {
+    return startingMileage;
+  }
+}
+
 // How many weeks to train at a given mileage before adding more?
 function weeksAtMileage(currentMileage) {
   var func;
@@ -44,7 +68,7 @@ function weeksToGoal(currentMileage, goalMileage) {
   return weekCount;
 }
 
-// Never prescribe weekly mileage lower than 3
+// Never prescribe weekly mileage lower than 3 mpw
 function lessThan3(currentMileage) {
   return {
     milesAtNextLevel: 3,
@@ -78,6 +102,7 @@ function moreThan20(currentMileage) {
 
 module.exports = {
   weeksToGoal: weeksToGoal,
+  mileageAtWeek: mileageAtWeek,
   weeksAtMileage: weeksAtMileage,
   makeWeeksHuman: makeWeeksHuman
 };
@@ -211,5 +236,34 @@ QUnit.test('How long to train from 50-75 miles per week?', function(assert) {
   assert.equal(duration, '1.1 years', 'Passed!');
 });
 
+QUnit.test('What mileage at week 1 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(1, 80);
+  assert.equal(mileage, 80);
+});
+
+QUnit.test('What mileage at week 2 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(2, 80);
+  assert.equal(mileage, 72);
+});
+
+QUnit.test('What mileage at week 3 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(3, 80);
+  assert.equal(mileage, 68);
+});
+
+QUnit.test('What mileage at week 4 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(4, 80);
+  assert.equal(mileage, 72);
+});
+
+QUnit.test('What mileage at week 5 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(5, 80);
+  assert.equal(mileage, 80);
+});
+
+QUnit.test('What mileage at week 6 of 80 miles per week?', function(assert) {
+  var mileage = Training.mileageAtWeek(6, 80);
+  assert.equal(mileage, 80);
+});
 
 },{"../index":1}]},{},[2]);
